@@ -1,17 +1,180 @@
 ---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
+const allPosts = await getCollection('blog');
+const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Sugar Coded Games">
+  <style>
+    .hero {
+      margin: 0 0 4rem;
+      text-align: center;
+      padding: 3rem 0;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin-bottom: 1.25rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #2B6DF6 0%, #3B82F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.35rem;
+      color: #9FB0C3;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 400;
+    }
+
+    .about {
+      margin: 3rem 0 4rem;
+      padding: 2.5rem;
+      background: rgba(21, 32, 43, 0.6);
+      border-radius: 16px;
+      border: 1px solid rgba(43, 109, 246, 0.2);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .about h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1.25rem;
+      color: #E6EEF6;
+      font-weight: 700;
+    }
+
+    .about p {
+      color: #9FB0C3;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    .posts {
+      margin: 3rem 0 2rem;
+    }
+
+    .posts h3 {
+      font-size: 1.75rem;
+      margin-bottom: 2.5rem;
+      color: #E6EEF6;
+      font-weight: 700;
+    }
+
+    .post-list {
+      list-style: none;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .post-item {
+      padding: 2rem;
+      background: rgba(21, 32, 43, 0.4);
+      border-radius: 12px;
+      border: 1px solid rgba(43, 109, 246, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .post-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(43, 109, 246, 0.25);
+      border-color: rgba(43, 109, 246, 0.5);
+      background: rgba(21, 32, 43, 0.6);
+    }
+
+    .post-item h4 {
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    .post-item a {
+      color: #2B6DF6;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .post-item a:hover {
+      color: #3B82F6;
+    }
+
+    .post-date {
+      color: #9FB0C3;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .post-description {
+      color: #9FB0C3;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      .about {
+        padding: 1.75rem;
+      }
+
+      .post-item {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+
+  <section class="hero">
+    <h2>Arcane Gambit</h2>
+    <p>A tactical card-battler where chess meets deck-building roguelike action.</p>
+  </section>
+
+  <section class="about">
+    <h3>About the Game</h3>
+    <p>
+      Arcane Gambit is a turn-based tactical game that fuses chess strategy with card-based gameplay.
+      Play cards to summon chess pieces onto a grid, each with unique movement patterns and combat abilities.
+      Build your deck, manage your energy, and outmaneuver your opponent in this innovative blend of
+      chess, deck-building, and roguelike elements inspired by Slay the Spire and Balatro.
+    </p>
+  </section>
+
+  <section class="posts">
+    <h3>Latest Posts</h3>
+    {sortedPosts.length === 0 ? (
+      <p>No posts yet. Check back soon!</p>
+    ) : (
+      <ul class="post-list">
+        {sortedPosts.map(post => (
+          <li class="post-item">
+            <h4>
+              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+            </h4>
+            <div class="post-date">
+              {post.data.date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+              })}
+            </div>
+            {post.data.description && (
+              <p class="post-description">{post.data.description}</p>
+            )}
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</BaseLayout>
