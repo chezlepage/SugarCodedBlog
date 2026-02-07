@@ -18,7 +18,7 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
       font-size: 3rem;
       margin-bottom: 1.25rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #2B6DF6 0%, #3B82F6 100%);
+      background: linear-gradient(135deg, var(--accent-0) 0%, var(--accent-1) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -138,16 +138,20 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.getTime() - a.data.date.
 
   <section class="hero">
     <h2>Arcane Gambit</h2>
-    <p>A tactical card-battler where chess meets deck-building roguelike action.</p>
+    <p>A tactical card-battler where chess meets deck-building—summon pieces, spend energy, and outplay the board.</p>
   </section>
 
   <section class="about">
     <h3>About the Game</h3>
     <p>
       Arcane Gambit is a turn-based tactical game that fuses chess strategy with card-based gameplay.
-      Play cards to summon chess pieces onto a grid, each with unique movement patterns and combat abilities.
-      Build your deck, manage your energy, and outmaneuver your opponent in this innovative blend of
-      chess, deck-building, and roguelike elements inspired by Slay the Spire and Balatro.
+      Between matches you can roam a small hub, then dive into grid-based battles where your cards become units:
+      play a card to summon a chess piece, use classic movement rules to position, and fight with HP + damage through
+      adjacency-based attacks.
+      
+      Each turn you manage a small energy pool (used for card plays and even movement), and spells/terrain cards add
+      the “deck-builder” twist—things like targeted damage, healing, repositioning, and reshaping tiles with elevation
+      and obstacles.
     </p>
   </section>
 
