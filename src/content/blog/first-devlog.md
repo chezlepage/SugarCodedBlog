@@ -43,10 +43,10 @@ One important “prototype reality” note: Kings currently have **very low HP**
 
 ## The Three-Person Team
 
-This is a collaborative project between three developers, each bringing specialized skills:
-- **Alex: Core Systems Developer**: Match flow & rules, AI behavior, deck management, game architecture
-- **Amanda: UI/UX Developer**: Building screens, card presentation, visual feedback, HUD systems
-- **Mike: 3D Artist**: Modeling chess pieces, animations, visual effects, board aesthetics
+It’s a three-person project, with each of us covering a different lane:
+- **Alex (Core Systems)**: match rules/flow, architecture, gameplay mechanics
+- **Amanda (UI/UX)**: screens, card presentation, HUD, feedback
+- **Mike (3D Art)**: modeling, animation, VFX
 
 
 ## What's Next
