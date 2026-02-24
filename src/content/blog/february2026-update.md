@@ -1,6 +1,6 @@
 ---
 title: "Arcane Gambit: February 2026 update"
-description: Good chunks"
+description: "Good chunks"
 date: 2026-02-27
 ---
 
