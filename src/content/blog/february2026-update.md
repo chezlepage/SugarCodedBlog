@@ -1,3 +1,9 @@
+---
+title: "Arcane Gambit: February 2026 update"
+description: Good chunks"
+date: 2026-02-27
+---
+
 February brought the biggest expansion to Arcane Gambit since we started. 🎉 Last month we had a working game loop -- place pieces, spend energy, take the king. This month we have been building the world *around* that loop: a real economy, elemental combat, card upgrades, a hub you can actually walk around in, and the first hints of a story.
 
 Here is where things stand.
